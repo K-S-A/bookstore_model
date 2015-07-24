@@ -15,7 +15,7 @@ class Order < ActiveRecord::Base
   validates_numericality_of :total, greater_than_or_equal_to: 0
   validates_inclusion_of :state, in: STATES
 
-scope :in_progress, -> {where(state: STATES[0])}
+  scope :in_progress, -> {where(state: STATES[0])}
 
   def add_item(book, quantity = 1)
     if existing_item = order_items.find_by(book: book)

@@ -1,6 +1,9 @@
 FactoryGirl.define do
+  sequence :title do |n|
+    "New Category Title#{n}"
+  end
   factory :category do
-    title { Faker::Name.title }
+    title
   end
 
 end
