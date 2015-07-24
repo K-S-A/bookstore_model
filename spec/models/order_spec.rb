@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Order, type: :model do
   STATES = %w(in\ progress completed shipped)
 
-  subject { FactoryGirl.create(:order) }
+  subject { FactoryGirl.create(:order, state: 'completed') }
 
 # Associations tests
   it { expect(subject).to belong_to(:customer).touch(true) }
@@ -33,8 +33,21 @@ RSpec.describe Order, type: :model do
   end
 
 #
+  context '.in_progress' do
+    before(:all) do
+      @orders_in_progress = FactoryGirl.create_list(:order_in_progress, 2)
+      @orders_completed = FactoryGirl.create_list(:order_completed, 2)
+    end
+    it 'returns list of orders in progress' do
+      expect(subject.class.in_progress).to match_array(@orders_in_progress)
+    end
+    it 'doesn\'t return completed orders' do
+      expect(subject.class.in_progress).not_to match_array(@orders_completed)
+    end
+  end
+
   context '#add_item' do
-    before { @book = FactoryGirl.create(:book) }
+    before(:all) { @book = FactoryGirl.create(:book) }
     context 'when adding not existing order item (book)' do
       context 'without quantity specified' do
         it 'should add book as new order item' do

@@ -9,4 +9,11 @@ class Customer < ActiveRecord::Base
   validates :email, presence: true,
                     email:    true
 
+  def order_new
+    orders.create
+  end
+
+  def current_order
+    orders.in_progress.last
+  end
 end
