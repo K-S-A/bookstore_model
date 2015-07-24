@@ -35,7 +35,6 @@ class Order < ActiveRecord::Base
     if order_items.any?
       self.total = 0
       ::OrderItem.where(order_id: self.id).find_each{ |i| self.total += i.price * i.quantity }
-#      self.total = order_items.inject(0.0) { |s, i| s + i.price*i.quantity }
     else
       self.total = 0.0
     end
