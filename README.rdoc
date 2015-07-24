@@ -1,5 +1,6 @@
 {<img src="https://travis-ci.org/K-S-A/bookstore_model.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/K-S-A/bookstore_model]
 {<img src="https://codeclimate.com/repos/55b289e169568014aa007687/badges/3171b4e8befae0b659f9/gpa.svg" />}[https://codeclimate.com/repos/55b289e169568014aa007687/feed]
+{<img src="https://codeclimate.com/repos/55b289e169568014aa007687/badges/3171b4e8befae0b659f9/coverage.svg" />}[https://codeclimate.com/repos/55b289e169568014aa007687/coverage]
 
 == README
 
